@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expensis Splitter</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="content">
+            <img src="Graphic.png" alt="">
+            <h1>Expenses Splitter</h1>
+
+            <div class="input-group">
+                <input type="text" required id="totalSum">
+                <span class="highlight"></span>
+                <label>Total Sum</label>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" required id="nrPeople">
+                <span class="highlight"></span>
+                <label>How sum will be divided</label>
+            </div>
+            <br>
+
+            <div class="floating-label">
+                <select class="floating-select" id="options">
+                  <option value="0" disabled selected>Equal for all</option>
+                  <option value="op1">Equal for all<i class="fa fa-check-circle-o" aria-hidden="true"></i></option>
+                  <option value="op2">You 50% other 50% equally</option>
+                  <option value="op3">You do not pay, amount is shared to other people.</option>
+                </select>
+                <span class="highlight"></span>
+                <label>Select</label>
+            </div>
+
+            <button id="calculateButton" type="button" >Calculate</button>
+            <br>
+            <div class="result">
+                <div id="myPay"></div>
+                <div id="perPerson"></div>
+            </div>
+
+        </div>
+    </div>
+    
+    <script src="calculate.js"></script>
+</body>
+</html>
