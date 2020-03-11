@@ -1,26 +1,23 @@
 
-const splitting = () => {
+function splitting () {
     let totalSum = parseFloat(document.querySelector('#totalSum').value);
     let nrPeople = parseInt(document.querySelector('#nrPeople').value);
     
-    var val = document.getElementById('options').value;
+    var val = document.getElementById('options').value;  
     
-    function check() {
+    check(val,totalSum,nrPeople);
+};
 
-        if ( val == "0" ) {
-            alert("Please make a selection");
-            return false;
-        }
-        if ( nrPeople == "0" || totalSum == null || nrPeople == null) { //second condition doesn't work!!!!
-            alert("Error");
-        }
-        if ( val == "op3" ) {
+function check(val, totalSum, nrPeople) {
+
+    if (hasValidValues(val, totalSum, nrPeople)){
+        if (val == "op3") {
             const calculate = totalSum / (nrPeople - 1);
             document.querySelector('#myPay').innerHTML = "<span class='text'>You pay: </span>" + "$" + 0.00;
             document.querySelector('#perPerson').innerHTML = "<span class='text'> Others: </span>" + "$" + calculate.toFixed(2) + "/person";
-        
+    
         }
-        else if ( val == "op2" ) {
+        else if (val == "op2") {
             const myPay = totalSum / 2;
             const othersPay = myPay / (nrPeople - 1);
             document.querySelector('#myPay').innerHTML = "<span class='text'> You pay: </span>" + "$" + myPay.toFixed(2);
@@ -30,15 +27,27 @@ const splitting = () => {
             const calculate = totalSum / nrPeople;
             document.querySelector('#myPay').innerHTML = "<span class='text'> You pay: </span>" + "$" + calculate.toFixed(2);
             document.querySelector('#perPerson').innerHTML = "<span class='text'> Others: </span>" + "$" + calculate.toFixed(2) + "/person";
-        }    
-    
-    }   
-    
-    check();
-    };
-    
-    const button = document.querySelector('#calculateButton');
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        splitting();
-    });
+        }
+    }
+
+} 
+
+function hasValidValues(val, totalSum, nrPeople) {
+
+    if (val == "0") {
+        alert("Please make a selection");
+        return false;
+    }
+
+    if (nrPeople == "0" || totalSum == null || nrPeople == null) { //second condition doesn't work!!!!
+        alert("Error");
+        return false
+    }
+
+    return true
+}
+const button = document.querySelector('#calculateButton');
+button.addEventListener('click', (e) => {
+    e.preventDefault();
+    splitting();
+});
